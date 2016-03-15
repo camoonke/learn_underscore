@@ -1,0 +1,27 @@
+{
+  "name": "learn_underscore",
+  "version": "0.0.1",
+  "description": "learn underscore by implement its api",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camoonke/learn_underscore.git"
+  },
+  "keywords": [
+    "underscore"
+  ],
+  "author": "camoonke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camoonke/learn_underscore/issues"
+  },
+  "homepage": "https://github.com/camoonke/learn_underscore#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
+    "should": "^8.2.2"
+  }
+}
