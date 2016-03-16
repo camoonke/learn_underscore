@@ -57,4 +57,19 @@ describe('test/collection.test.js', function () {
     }).should.eql([2, 4, 6])
   })
 
+  it('#where', function () {
+    var listOfPlays = [{title: "Cymbeline"}, {title: "The Tempest"}]
+    _.where(listOfPlays, {
+        author: "Shakespeare",
+        year: 1611
+    }).should.eql([
+      {title: "Cymbeline",
+      author: "Shakespeare",
+      year: 1611},
+      {title: "The Tempest",
+      author: "Shakespeare",
+      year: 1611
+    }])
+  })
+
 })
