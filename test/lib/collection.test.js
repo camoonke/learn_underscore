@@ -44,4 +44,11 @@ describe('test/collection.test.js', function () {
     }, [])
     flat.should.eql([4, 5, 2, 3, 0, 1])
   })
+
+  it('#find', function () {
+    _.find([1, 2, 3, 4, 5, 6], function(num){
+      return num % 2 == 0;
+    }).should.eql(2)
+  })
+
 })
