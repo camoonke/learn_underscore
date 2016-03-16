@@ -12,8 +12,21 @@ describe('test/collection.test.js', function () {
     str = ''
     var obj = {one: 1, two: 2, three: 3}
     _.each(obj, function (e, i, obj) {
+      console.log(e, i, obj)
       str += i + '' + e + ':'
     })
     str.should.eql('one1:two2:three3:')
   })
+
+  it('#map', function () {
+    _.map([1, 2, 3], function(num){
+        return num * 3;
+    }).should.eql([3, 6, 9])
+
+    _.map({one: 1, two: 2, three: 3}, function(num, key){ 
+      return num * 3; 
+    }).should.eql([3, 6, 9])
+  })
+
+  
 })
