@@ -12,7 +12,6 @@ describe('test/collection.test.js', function () {
     str = ''
     var obj = {one: 1, two: 2, three: 3}
     _.each(obj, function (e, i, obj) {
-      console.log(e, i, obj)
       str += i + '' + e + ':'
     })
     str.should.eql('one1:two2:three3:')
@@ -28,5 +27,21 @@ describe('test/collection.test.js', function () {
     }).should.eql([3, 6, 9])
   })
 
-  
+  it('#reduce', function () {
+    _.reduce([1, 2, 3], function(memo, num){
+      return memo + num;
+    }, 0).should.eql(6)
+
+    _.reduce([1, 2, 3], function(memo, num){
+      return memo + num;
+    }, 2).should.eql(8)
+  })
+
+  it('#reduceRight', function () {
+    var list = [[0, 1], [2, 3], [4, 5]];
+    var flat = _.reduceRight(list, function(a, b) {
+      return a.concat(b); 
+    }, [])
+    flat.should.eql([4, 5, 2, 3, 0, 1])
+  })
 })
