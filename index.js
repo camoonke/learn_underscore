@@ -3,7 +3,8 @@ var underscore = function () {
 }
 
 var functionArr = [
-  require('./lib/underscore_array'),
+  require('./lib/array'),
+  require('./lib/collection'),
 ]
 
 for (var i = 0; i < functionArr.length; i++) {
