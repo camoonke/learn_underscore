@@ -51,4 +51,10 @@ describe('test/collection.test.js', function () {
     }).should.eql(2)
   })
 
+  it('#filter', function () {
+    _.filter([1, 2, 3, 4, 5, 6], function(num){
+      return num % 2 == 0;
+    }).should.eql([2, 4, 6])
+  })
+
 })
