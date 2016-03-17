@@ -72,4 +72,13 @@ describe('test/collection.test.js', function () {
     }])
   })
 
+  it('#findWhere', function () {
+    var publicServicePulitzers = [{year: 1918, newsroom: "The New York Times",reason: "For its public service in publishing in full so many official reports,documents and speeches by European statesmen relating to the progress andconduct of the war."}]
+    _.findWhere(publicServicePulitzers, {newsroom: "The New York Times"}).should.eql(publicServicePulitzers[0])
+  })
+
+  it('#reject', function () {
+    _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }).should.eql([1, 3, 5])
+  })
+
 })
