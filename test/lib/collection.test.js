@@ -78,7 +78,25 @@ describe('test/collection.test.js', function () {
   })
 
   it('#reject', function () {
-    _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }).should.eql([1, 3, 5])
+    _.reject([1, 2, 3, 4, 5, 6], function(num){
+      return num % 2 == 0;
+    }).should.eql([1, 3, 5])
+  })
+
+  it('#every', function () {
+    _.every([2, 4, 5], function(num) {
+      return num % 2 == 0;
+    }).should.eql(false)
+  })
+
+  it('#some', function () {
+    _.some([null, 0, 'yes', false])
+      .should.eql(true)
+  })
+
+  it('#contains', function () {
+    _.contains([1, 2, 3], 3)
+      .should.eql(true)
   })
 
 })
