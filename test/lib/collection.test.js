@@ -97,6 +97,30 @@ describe('test/collection.test.js', function () {
   it('#contains', function () {
     _.contains([1, 2, 3], 3)
       .should.eql(true)
+
+    _.contains([{
+        x: 1,
+        y: 2
+      }, {
+        x: 0,
+        y: 1
+      }], {x: 1, y: 2})
+      .should.eql(true)
+  })
+
+  it('#invoke', function () {
+    _.invoke([[5, 1, 7], [3, 2, 1]], 'sort')
+      .should.eql([[1, 5, 7], [1, 2, 3]])
+
+    _.invoke([[5, 1, 7], [3, 2, 1]], function () {
+      return !!~this.indexOf(5)
+    }).should.eql([true, false])
+  })
+
+  it('#pluck', function () {
+    var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    _.pluck(stooges, 'name')
+      .should.eql(["moe", "larry", "curly"])
   })
 
 })
