@@ -123,4 +123,13 @@ describe('test/collection.test.js', function () {
       .should.eql(["moe", "larry", "curly"])
   })
 
+  it('#max', function () {
+    var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    _.max(stooges, function(stooge){
+        return stooge.age; 
+    }).should.eql({name: 'curly', age: 60})
+
+    _.max([1, 2, 3]).should.eql(3)
+  })
+
 })
