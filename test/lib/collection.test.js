@@ -132,4 +132,9 @@ describe('test/collection.test.js', function () {
     _.max([1, 2, 3]).should.eql(3)
   })
 
+  it('#max', function () {
+    var numbers = [10, 5, 100, 2, 1000];
+    _.min(numbers).should.eql(2)
+  })
+
 })
