@@ -137,4 +137,38 @@ describe('test/collection.test.js', function () {
     _.min(numbers).should.eql(2)
   })
 
+  it('#sortBy', function () {
+    _.sortBy([1, 2, 3, 4, 5, 6], function(num){
+      return Math.sin(num);
+    }).should.eql([5, 4, 6, 3, 1, 2])
+
+    var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    _.sortBy(stooges, 'name')
+      .should.eql([{name: 'curly', age: 60}, {name: 'larry', age: 50}, {name: 'moe', age: 40}])
+  })
+
+  it('#groupBy', function () {
+    _.groupBy([1.3, 2.1, 2.4], function(num){ 
+      return Math.floor(num);
+    }).should.eql({1: [1.3], 2: [2.1, 2.4]})
+
+    _.groupBy(['one', 'two', 'three'], 'length')
+      .should.eql({3: ["one", "two"], 5: ["three"]})
+  })
+
+  it('#indexBy', function () {
+   var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}]
+   _.indexBy(stooges, 'age')
+    .should.eql({
+      "40": {name: 'moe', age: 40},
+      "50": {name: 'larry', age: 50},
+      "60": {name: 'curly', age: 60}
+    })
+  })
+
+  it('#countBy', function () {
+   _.countBy([1, 2, 3, 4, 5], function(num) {
+      return num % 2 == 0 ? 'even': 'odd';
+    }).should.eql({odd: 3, even: 2})
+  })
 })
