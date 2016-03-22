@@ -171,4 +171,32 @@ describe('test/collection.test.js', function () {
       return num % 2 == 0 ? 'even': 'odd';
     }).should.eql({odd: 3, even: 2})
   })
+
+  it('#toArray', function () {
+    _.toArray([1, 2, 3, 4, 5]).should.eql([1, 2, 3, 4, 5])
+    _.toArray({
+      x: 1,
+      y: 2
+    }).should.eql([1, 2])
+    _.toArray([{
+      x: 1, 
+      y: 2}, {
+      z: 1
+    }]).should.eql([{x: 1, y: 2}, {z: 1}])
+  })
+
+  it('#size', function () {
+    _.size({
+      one: 1,
+      two: 2,
+      three: 3
+    }).should.eql(3)
+  })
+
+  it('#partition', function () {
+    _.partition([0, 1, 2, 3, 4, 5], function(num) {
+      return num % 2 === 0;
+    }).should.eql([[0, 2, 4], [1, 3, 5]])
+  })
+
 })
