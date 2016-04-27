@@ -25,4 +25,9 @@ describe('test/array.test.js', function () {
     _.compact([0, 1, false, 2, '', 3]).should.eql([1, 2, 3])
   })
 
+  it('#flatten', function () {
+    _.flatten([1, [2], [3, [[4]]]]).should.eql([1, 2, 3, 4])
+    _.flatten([1, [2], [3, [[4]]]], true).should.eql([1, 2, 3, [[4]]])
+  })
+
 })
