@@ -30,4 +30,13 @@ describe('test/array.test.js', function () {
     _.flatten([1, [2], [3, [[4]]]], true).should.eql([1, 2, 3, [[4]]])
   })
 
+  it('#difference', function () {
+    _.difference([1, 2, 3, 4, 5], [5, 2, 10]).should.eql([1, 3, 4])
+  })
+
+  it('#without', function () {
+    _.without([1, 2, 1, 0, 3, 1, 4], 0, 1).should.eql([2, 3, 4])
+  })
+
+
 })
