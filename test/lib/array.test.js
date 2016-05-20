@@ -38,5 +38,37 @@ describe('test/array.test.js', function () {
     _.without([1, 2, 1, 0, 3, 1, 4], 0, 1).should.eql([2, 3, 4])
   })
 
+  it('#uniq', function () {
+    _.uniq([1, 2, 1, 3, 1, 4]).should.eql([1, 2, 3, 4]) 
+    _.uniq([1, 2, 3, 3, 4, 4, 5], true).should.eql([1, 2, 3, 4, 5])
+  })
+  
+  it('#union', function () {
+    _.union([1, 2, 3], [101, 2, 1, 10], [2, 1]).should.eql([1, 2, 3, 101, 10])
+  })
 
+  it('#intersection', function () {
+    _.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]).should.eql([1, 2])
+  })
+
+  it('#unzip', function () {
+    _.unzip([['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]]).should.eql([["moe", 30, true], ["larry", 40, false], ["curly", 50, false]])
+  })
+
+  it('#zip', function () {
+    _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]).should.eql([["moe", 30, true], ["larry", 40, false], ["curly", 50, false]])
+  })
+
+  it('#object', function () {
+    _.object(['moe', 'larry', 'curly'], [30, 40, 50]).should.eql({moe: 30, larry: 40, curly: 50})
+    _.object([['moe', 30], ['larry', 40], ['curly', 50]]).should.eql({moe: 30, larry: 40, curly: 50})
+  })
+
+  it('#indexOf', function () {
+    _.indexOf([1, 2, 3], 2).should.eql(1)
+  })
+
+  it('#lastIndexOf', function () {
+    _.lastIndexOf([1, 2, 3, 1, 2, 3], 2).should.eql(4)
+  })
 })
