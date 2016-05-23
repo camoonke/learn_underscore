@@ -5,6 +5,7 @@ var underscore = function () {
 var functionArr = [
   require('./lib/array'),
   require('./lib/collection'),
+  require('./lib/function')
 ]
 
 for (var i = 0; i < functionArr.length; i++) {
