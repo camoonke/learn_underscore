@@ -71,4 +71,30 @@ describe('test/array.test.js', function () {
   it('#lastIndexOf', function () {
     _.lastIndexOf([1, 2, 3, 1, 2, 3], 2).should.eql(4)
   })
-})
+
+  it('#sortedIndex', function () {
+    _.sortedIndex([10, 20, 30, 40, 50], 35).should.eql(3)
+    var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 60}];
+    _.sortedIndex(stooges, {name: 'larry', age: 50}, 'age').should.eql(1)
+  })
+
+  it('#findIndex', function () {
+    _.findIndex([4, 6, 8, 12], function(v) {
+      return v % 2 === 0
+    }).should.eql(0)
+  })
+
+  it('#findLastIndex', function () {
+    _.findLastIndex([4, 6, 8, 12], function(v) {
+      return v % 2 === 0
+    }).should.eql(3)
+  })
+
+  it('#range', function () {
+    _.range(10).should.eql([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    _.range(1, 11).should.eql([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    _.range(0, 30, 5).should.eql([0, 5, 10, 15, 20, 25])
+    _.range(0, -10, -1).should.eql([0, -1, -2, -3, -4, -5, -6, -7, -8, -9])
+    _.range(0).should.eql([])
+  })
+})  
