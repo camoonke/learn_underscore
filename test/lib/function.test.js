@@ -54,4 +54,13 @@ describe('test/function.test.js', function () {
       'test'.should.not.eql(fn2())
     })
   })
+
+  it('#partial', function () {
+    var subtract = function(a, b) { return b - a; }
+    sub5 = _.partial(subtract, 5)
+    sub5(20).should.eql(15)
+
+    subFrom20 = _.partial(subtract, _, 20)
+    subFrom20(5).should.eql(15)
+  })
 })  
