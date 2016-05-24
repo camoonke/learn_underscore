@@ -63,4 +63,25 @@ describe('test/function.test.js', function () {
     subFrom20 = _.partial(subtract, _, 20)
     subFrom20(5).should.eql(15)
   })
+
+  it('#memoize', function () {
+    var m = _.memoize(function (a, b) {
+      return a + b;
+    })
+    m(1, 2).should.eql(3);
+    ('1' in m.cache).should.true()
+
+    var m1 = _.memoize(function (a, b) {
+      return a + b;
+    }, function () {
+      return 10
+    })
+    m1(1, 2).should.eql(3);
+    ('10' in m1.cache).should.true()
+
+    var fibonacci = _.memoize(function(n) {
+      return n < 2 ? n: fibonacci(n - 1) + fibonacci(n - 2);
+    });
+    fibonacci(1000) // should fast
+  })
 })  
