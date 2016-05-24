@@ -84,4 +84,30 @@ describe('test/function.test.js', function () {
     });
     fibonacci(1000) // should fast
   })
+
+  it('#delay', function () {
+    var a = 0
+    var func = function (b) {
+      a = a + b
+    };
+    a.should.eql(0)
+    _.delay(func, 30, 10);
+
+    setTimeout(function () {
+      a.should.eql(10)
+    }, 50)
+  })
+
+  it('#defer', function () {
+    var a = 0
+    var func = function (b) {
+      a = a + b
+    };
+    a.should.eql(0)
+    _.defer(func, 10);
+
+    setTimeout(function () {
+      a.should.eql(10)
+    }, 50)
+  })
 })  
