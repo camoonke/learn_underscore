@@ -110,4 +110,66 @@ describe('test/function.test.js', function () {
       a.should.eql(10)
     }, 50)
   })
+
+  it('#once', function () {
+    var count = 0
+    function addCount (a) {
+      count = count + a
+    }
+    var init = _.once(addCount)
+    init(10);
+    count.should.eql(10)
+    init(20);
+    count.should.eql(10)
+  })
+
+  it('#after', function () {
+    var count = 0
+    function addCount (b) {
+      count += b
+    }
+    var after = _.after(3, addCount)
+    after(10)
+    count.should.eql(0)
+    after(20)
+    count.should.eql(0)
+    after(10)
+    count.should.eql(10)
+  })
+
+  it('#before', function () {
+    var count = 0
+    function addCount (b) {
+      count += b
+    }
+    var before = _.before(3, addCount)
+    before(10)
+    count.should.eql(10)
+    before(10)
+    count.should.eql(20)
+    before(10)
+    count.should.eql(30)
+    before(10)
+    count.should.eql(30)
+  })
+
+  it('#wrap', function () {
+    var hello = function(name) { return "hello: " + name; };
+    hello = _.wrap(hello, function(func) {
+      return "before, " + func("moe") + ", after";
+    });
+    hello().should.eql('before, hello: moe, after')
+  })
+
+  it('#negate', function () {
+    var isFalsy = _.negate(Boolean);
+    _.find([-2, -1, 0, 1, 2], isFalsy);
+  })
+
+  it('#compose', function () {
+    var greet    = function(name){ return "hi: " + name; };
+    var exclaim  = function(statement){ return statement.toUpperCase() + "!"; };
+    var welcome = _.compose(greet, exclaim);
+    welcome('moe').should.eql('hi: MOE!')
+  })
 })  
