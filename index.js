@@ -6,7 +6,8 @@ var functionArr = [
   require('./lib/array'),
   require('./lib/collection'),
   require('./lib/function'),
-  require('./lib/object')
+  require('./lib/object'),
+  require('./lib/utility')
 ]
 
 for (var i = 0; i < functionArr.length; i++) {
